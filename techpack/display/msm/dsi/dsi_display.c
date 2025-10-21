@@ -65,7 +65,7 @@ static int esd_greenish_count;
 static struct dsi_display *primary_display;
 static char reg_read_value[128] = {0};
 /* jack.jiao@MM 20200612 add for distinguish seed value for normal light and low light*/
-static seed_low_backlight = 40;
+static int seed_low_backlight = 40;
 
 int reg_read_len = 1;
 EXPORT_SYMBOL(reg_read_len);

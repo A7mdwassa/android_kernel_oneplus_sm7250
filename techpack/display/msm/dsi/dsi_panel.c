@@ -117,7 +117,7 @@ static int    cur_backlight = -1;
 static int    cur_fps = 60;
 static int    cur_h = 1400;
 static struct dsi_panel_cmd_set gamma_cmd_set[2];
-static seed_low_backlight = 40;
+static int seed_low_backlight = 40;
 int sp_read_flag = SP_READ_SUCCESS;
 char gamma_para[2][413] = {
 {
