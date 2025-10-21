@@ -94,10 +94,10 @@ clone() {
 	then
 		if [ ! -d "${HOME}/toolchains/clang-llvm" ]; then
 			msg "|| Cloning Proton Clang-13 ||"
-			git clone --depth=1 https://github.com/kdrag0n/proton-clang.git /home/nassar/toolchains/clang-llvm
+			git clone --depth=1 https://github.com/kdrag0n/proton-clang.git /home/wassa/toolchains/clang-llvm
 		fi
 		# Toolchain Directory defaults to clang-llvm
-		TC_DIR=/home/nassar/toolchains/clang-llvm
+		TC_DIR=/home/wassa/toolchains/clang-llvm
 		export LD_LIBRARY_PATH=${TC_DIR}/lib64:${TC_DIR}/lib:$LD_LIBRARY_PATH
 		export PATH=${TC_DIR}/bin:$PATH
 
@@ -113,7 +113,7 @@ clone() {
 	fi
 	if [ ! -d "${HOME}/libufdt" ]; then
 		msg "|| Cloning libufdt ||"
-		git clone https://android.googlesource.com/platform/system/libufdt /home/nassar/libufdt
+		git clone https://android.googlesource.com/platform/system/libufdt /home/wassa/libufdt
 	fi
 }
 
@@ -129,7 +129,7 @@ exports() {
 
 	if [ $COMPILER = "clang" ]
 	then
-		TC_DIR=/home/nassar/toolchains/clang-llvm
+		TC_DIR=/home/wassa/toolchains/clang-llvm
 		KBUILD_COMPILER_STRING=$("$TC_DIR"/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
 		PATH=$TC_DIR/bin/:$PATH
                 LD_LIBRARY_PATH=${TC_DIR}/lib64:${TC_DIR}/lib:$LD_LIBRARY_PATH
@@ -201,7 +201,7 @@ build_kernel() {
 	    	if [ $BUILD_DTBO = 1 ]
 			then
 				msg "|| Building DTBO ||"
-				python2 "/home/nassar/libufdt/utils/src/mkdtboimg.py" \
+				python2 "/home/wassa/libufdt/utils/src/mkdtboimg.py" \
 				create "$KERNEL_DIR/out/arch/arm64/boot/dtbo.img" --page_size=4096 "$KERNEL_DIR/out/arch/arm64/boot/dts/vendor/qcom/avicii-overlay-dvt.dtbo"
 			fi
 		fi
